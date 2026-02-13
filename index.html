@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>For Sanjay ❤️</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    background:linear-gradient(135deg,#ff758c,#ff7eb3);
+    font-family:Arial;
+    text-align:center;
+    color:white;
+    overflow:hidden;
+}
+
+/* ❤️ start button */
+#startBtn{
+    margin-top:40vh;
+    padding:18px 35px;
+    font-size:22px;
+    background:#ff4d6d;
+    border:none;
+    border-radius:40px;
+    color:white;
+    cursor:pointer;
+    transition:.3s;
+}
+#startBtn:hover{
+    transform:scale(1.1);
+}
+
+/* hide main first */
+#main{
+    display:none;
+    animation:fadeIn 2s ease;
+}
+
+/* typing */
+#typing{
+    font-size:30px;
+    font-weight:bold;
+    margin-top:20px;
+}
+
+/* slideshow */
+.slideshow-container{
+    width:300px;
+    height:350px;
+    margin:25px auto;
+    position:relative;
+}
+
+.slide{
+    position:absolute;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:20px;
+    opacity:0;
+    transition:opacity 1s;
+}
+
+/* paragraph */
+.love-msg{
+    width:80%;
+    margin:20px auto;
+    font-size:18px;
+    line-height:28px;
+    animation:fadeIn 3s ease;
+}
+
+/* floating hearts */
+.heart{
+    position:absolute;
+    bottom:-20px;
+    font-size:20px;
+    animation:float 6s linear infinite;
+}
+
+@keyframes float{
+    from{transform:translateY(0);}
+    to{transform:translateY(-110vh);}
+}
+
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+</style>
+</head>
+
+<body>
+
+<button id="startBtn" onclick="startLove()">Click For Surprise ❤️</button>
+
+<div id="main">
+
+<h2 id="typing"></h2>
+
+<audio id="music" loop>
+   <source src="Eppadi_Vandhaayo_-_Chinmayi_Anand_Aravindakshan.mp3" type="audio/mpeg">
+</audio>
+
+<div class="slideshow-container">
+    <img class="slide" src="pic1.jpeg">
+    <img class="slide" src="pic2.jpeg">
+    <img class="slide" src="pic3.jpeg">
+</div>
+
+<p class="love-msg">
+You are my happiness, my strength, my forever ❤️ <br>
+Every second with you feels magical ✨ <br>
+Every small memory reminds how special they are,
+Miss you sanjay ma...
+I Love You Fraud Always 💕
+</p>
+
+</div>
+
+
+
+<script>
+
+/* ❤️ start everything */
+function startLove(){
+
+    startBtn.style.display="none";
+    main.style.display="block";
+    music.play();
+
+    typingEffect();
+    startSlideshow();
+    setInterval(createHeart,300);
+}
+
+/* ❤️ typing */
+function typingEffect(){
+    let t="I Love You Sanjay ❤️",i=0;
+    setInterval(()=>typing.innerHTML=t.slice(0,i++),120);
+}
+
+/* ❤️ slideshow fade */
+function startSlideshow(){
+    let slides=document.querySelectorAll(".slide");
+    let i=0;
+    slides[0].style.opacity=1;
+
+    setInterval(()=>{
+        slides.forEach(s=>s.style.opacity=0);
+        i=(i+1)%slides.length;
+        slides[i].style.opacity=1;
+    },2000);
+}
+
+/* ❤️ floating hearts */
+function createHeart(){
+    const heart=document.createElement("div");
+    heart.innerHTML="❤️";
+    heart.className="heart";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(15+Math.random()*25)+"px";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),6000);
+}
+
+</script>
+
+</body>
+</html>
